@@ -158,4 +158,6 @@
 
 #define MB(board) (defined(BOARD_##board) && MOTHERBOARD==BOARD_##board)
 
+#define BOARD_TRIGORILLA        998  // Tigorilla
+
 #endif // __BOARDS_H

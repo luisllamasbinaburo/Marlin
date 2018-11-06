@@ -47,6 +47,11 @@ class FilamentRunoutSensor {
     FORCE_INLINE static void run() {
       if ((IS_SD_PRINTING || print_job_timer.isRunning()) && check() && !filament_ran_out) {
         filament_ran_out = true;
+		
+		 #if ENABLED(ANYCUBIC_TFT_MODEL) && ENABLED(ANYCUBIC_FILAMENT_RUNOUT_SENSOR)
+  AnycubicTFT.FilamentRunout();
+  #endif
+  
         enqueue_and_echo_commands_P(PSTR(FILAMENT_RUNOUT_SCRIPT));
         planner.synchronize();
       }
